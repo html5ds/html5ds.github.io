@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- iPhone 5 -->
+    <link href="/defaults/apple-touch-startup-image-640x1096.png"
+          media="(device-width: 320px) and (device-height: 568px)"
+          rel="apple-touch-startup-image">
+    <!-- iPhone 6 -->
+    <link href="/defaults/apple-touch-startup-image-750x1294.png"
+          media="(device-width: 375px) and (device-height: 667px)"
+          rel="apple-touch-startup-image">
+    <!-- iPhone 6 Plus Portrait -->
+    <link href="/defaults/apple-touch-startup-image-1242x2148.png"
+          media="(device-width: 414px) and (device-height: 736px)"
+          rel="apple-touch-startup-image">
+    <!-- iPad Portrait -->
+    <link href="/defaults/apple-touch-startup-image-1536x2008.png"
+          media="(device-width: 768px) and (device-height: 1024px)"
+          rel="apple-touch-startup-image">
+    <!-- iPad Landscape -->
+    <link href="/defaults/apple-touch-startup-image-2048x1496.png"
+          media="(device-width: 1024px) and (device-height: 768px)"
+          rel="apple-touch-startup-image">
+
+    <link rel="stylesheet" href="css/menu.css" type="text/css">
+    <link rel="stylesheet" href="css/switch.css" type="text/css">
+    <link rel="stylesheet" href="css/cartridge.css" type="text/css">
+    <link rel="stylesheet" href="css/segmented.css" type="text/css">
+    <link rel="stylesheet" href="css/gameboy.css" type="text/css">
+
+    <!-- Device Style Sheets -->
+    <link rel="stylesheet" href="css/devices/iphone4-portrait.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone4-landscape.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone5-portrait.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone5-landscape.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone6-portrait.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone6-landscape.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone6-plus-portrait.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/iphone6-plus-landscape.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/ipad-portrait.css" type="text/css">
+    <link rel="stylesheet" href="css/devices/ipad-landscape.css" type="text/css">
+
+    <link rel="apple-touch-icon-precomposed" href="images/icon.png">
+
+    <title>Game Play</title>
+  </head>
+  <body style="background-color: black;">
+    
+    <div id="gameboy">
+
+      <div class="screen-games-background" />
+      <div id="screen-games">
+        <div id="list-games" class="content" />
+        <div id="screen-loading" class="content screen" style="display: none">
+          <div class="placeholder">
+            <p>Loading&hellip;</p>
+          </div>
+        </div>
+        <div id="screen-empty" class="content screen" style="display: none">
+          <div class="placeholder">
+            <h1>No Games</h1>
+            <p>Add Game Boy ROMs to your Google Drive to see them here.</p>
+            <p><em>ROMs should be unzipped files with the .gb or .gbc extension.</em></p>
+            <p><em>Check out the <a href="https://gameplaycolor.com/faq/" target="_blank">FAQ</a> for help getting started.</em></p>
+          </div>
+        </div>
+        <div id="library-navigation-bar" class="navigation-bar library-navigation-bar">
+          <div id="button-account" class="navigation-button button-account">Settings</div>
+          <div id="button-done" class="navigation-button button-done button-right">Console</div>
+        </div>
+      </div>
+
+      <div id="screen-settings" class="settings screen hidden" style="display: none;">
+
+        <div class="dialog-layout-container screen">
+
+          <div class="dialog-margin"></div>
+
+          <div id="dialog-settings" class="dialog">
+            <div class="dialog-title">Settings</div>
+            <div class="dialog-divider"></div>
+            <div id="dialog-settings-body" class="dialog-body">
+              <div class="dialog-row">
+                <div class="dialog-row-label">Account</div>
+                <div id="account-details" class="dialog-row-detail-label"></div>
+              </div>
+
+              <!-- Sound -->
+              <div class="dialog-row">
+                <div class="dialog-row-label">Sound</div>
+                <div class="dialog-row-detail-label"><div id="switch" class="setting-switch"></div></div>
+              </div>
+
+              <!-- Speed -->
+              <div class="dialog-row">
+                <div class="dialog-row-label">Speed</div>
+                <div class="dialog-row-detail-label">
+                  <ol id="emulation-speed" class="segmented">
+                    <li class="selected">1.0</li>
+                    <li>1.5</li>
+                    <li>2.0</li>
+                    <li>3.0</li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Color -->
+              <div class="dialog-row">
+                <div class="dialog-row-label">Color</div>
+                <div class="dialog-row-detail-label">
+                  <ol id="console-color" class="segmented">
+                    <li class="grape selected"></li>
+                    <li class="cherry"></li>
+                    <li class="teal"></li>
+                    <li class="lime"></li>
+                    <li class="yellow"></li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Version -->
+              <div class="dialog-row">
+                <div class="dialog-row-label">Version</div>
+                <div id="application-version" class="dialog-row-detail-label">0.0.0</div>
+              </div>
+
+              <!-- Sign out -->
+              <div class="dialog-divider"></div>
+              <div id="screen-settings-sign-out" class="dialog-button">Sign out</div>
+
+              <!-- Send feedback -->
+              <div class="dialog-divider"></div>
+              <div id="screen-settings-send-feedback" class="dialog-button">Send feedback</div>
+
+            </div>
+
+            <div class="dialog-divider"></div>
+            <div id="screen-settings-done" class="dialog-button default">Done</div>
+
+          </div>
+
+          <div class="dialog-margin"></div>
+
+        </div><!-- dialog-layout-container -->
+      </div>
+
+      <div id="screen-console-container">
+        <div id="screen-console" class="screen grape theme-gbc hidden disable-animation">
+
+          <div id="moulding">
+            <div id="moulding-left"></div>
+            <div id="moulding-center"></div>
+            <div id="moulding-right"></div>
+          </div>
+
+          <div id="element-surround" class="element-surround">
+            <div id="surround" class="surround"></div>
+          </div>
+
+          <div id="element-screen">
+            <div id="display">
+              <canvas id="LCD" class="display" width="160" height="144"></canvas>
+              <div id="LCD-dropshadow"></div>
+            </div>
+          </div>
+
+          <div id="console-navigation-bar" class="navigation-bar console-navigation-bar">
+            <div id="button-library" class="navigation-button button-back button-library">Library</div>
+            <div id="button-game" class="navigation-button button-library button-right">Game</div>
+          </div>
+
+          <div id="element-dpad">
+            <div id="dpad-touch-target" class="dpad-touch-target">
+              <div id="dpad" class="dpad">
+                <div id="dpad-up" class="element up top arrow"></div>
+                <div id="dpad-left" class="element left middle arrow"></div>
+                <div id="dpad-down" class="element down bottom arrow"></div>
+                <div id="dpad-right" class="element right middle arrow"></div>
+                <div class="element center middle"></div>
+              </div>
+            </div>
+          </div>
+          <div id="element-options">
+            <div id="group-options">
+              <div class="button-option-group top left">
+                <div id="control-select" class="button-option"></div>
+                <div class="button-label">Select</div>
+              </div>
+              <div class="button-option-group top right">
+                <div id="control-start" class="button-option"></div>
+                <div class="button-label">Start</div>
+              </div>
+            </div>
+          </div>
+          <div id="element-buttons">
+            <div id="group-buttons">
+              <div id="control-a" class="button"><div class="control-text">A</div></div>
+              <div id="control-b" class="button"><div class="control-text">B</div></div>
+            </div>
+          </div>
+        </div><!-- screen-console -->
+      </div><!-- screen-console-container -->
+
+      <div id="screen-menu" class="screen screen-menu hidden" style="display: none;">
+        <div id="game-menu" class="menu hidden" style="display: none">
+          <ul>
+            <li id="menu-button-a-b-start-select">A + B + Start + Select</li>
+            <li id="menu-button-reset">Reset</li>
+          </ul>
+          <ul>
+            <li id="menu-button-cancel" class="default">Cancel</li>
+          </ul>
+        </div>
+      </div><!-- screen-menu -->
+
+      <div id="DEBUG" style="display: none"></div>
+      <div id="DEBUGGER"></div>
+
+    </div>
+    <div id="screen-splash" class="screen-splash"></div>
+    <div id="screen-instructions" class="screen-instructions" style="display: none">
+      <div class="placeholder">
+        <div class="appicon"></div>
+        <h1>Game Play Color</h1>
+        <ol class="install-instructions">
+          <li>Open in Mobile Safari on your iPhone or iPad</li>
+          <li>Tap the 'Share' button</li>
+          <li>Choose 'Add to Home Screen'</li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="screen-account" class="screen-instructions" style="display: none">
+      <div class="placeholder-small">
+        <div class="appicon"></div>
+        <h1 class="apptitle">Game Play Color</h1>
+        <div class="instructions">
+          <p>
+            <a class="simple-button sign-in-button" id="google-drive-auth" href="" target="_blank">Sign In</a>
+          </p>
+          <hr>
+          Enter access code:<br>
+          <input id="redeem-code" class="input-code" type="text"></input><br>
+          <div class="simple-button" id="button-redeem">Continue</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen-authorizing" class="screen-instructions" style="display: none">
+      <div class="placeholder">
+        <div class="appicon"></div>
+        <p>Copy and paste the access code into <strong>Game Play Color</strong> then click <strong>Continue</strong>.</p>
+        <textarea readonly="yes" rows="6" id="authorization-code" class="authorization-code" type="text" onFocus="this.selectionStart=0; this.selectionEnd=this.value.length;" onTouchEnd="this.selectionStart=0; this.selectionEnd=this.value.length;" onMouseUp="return false" />
+      </div>
+    </div>
+
+    <audio id="silent">
+      <source src="assets/silent.mp3" type="audio/mpeg">
+    </audio>
+
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/other/swfobject.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/other/resampler.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/other/XAudioServer.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/other/resize.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/other/base64.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/GameBoyCore.js"></script>
+    <script type="text/javascript" src="../cores/GameBoy-Online/js/GameBoyIO.js"></script>
+
+    <script type="text/javascript" src="js/spin.min.js"></script>
+    <script type="text/javascript" src="js/utilities.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/logging.js"></script>
+    <script type="text/javascript" src="js/control.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
+    <script type="text/javascript" src="js/library.js"></script>
+    <script type="text/javascript" src="js/games.js"></script>
+    <script type="text/javascript" src="js/pad.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/button.js"></script>
+    <script type="text/javascript" src="js/switch.js"></script>
+    <script type="text/javascript" src="js/segmented.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="js/gameboy.js"></script>
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/store.js"></script>
+    <script type="text/javascript" src="js/touchlistener.js"></script>
+    <script type="text/javascript" src="js/device.js"></script>
+    <script type="text/javascript" src="js/tracker.js"></script>
+    <script type="text/javascript" src="js/drive.js"></script>
+
+  </body>
+</html>
